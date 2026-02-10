@@ -26,8 +26,8 @@ The results will then be downloaded as a file with the .csv extension
 
 Scraping results for the Benešov district:
 
-1. argument: "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2101"
-2. argument: "benešov_results.csv"
+1. argument: ``` "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2101" ```
+2. argument: ``` "benešov_results.csv" ```
 
 Program launch:
 
@@ -52,3 +52,4 @@ municipality_code,municipality_name,registered_voters,envelopes_issued,valid_vot
 530743,Bílkovice,170,121,118,7,0,0,15,0,8,18,0,2,0,0,0,3,0,0,2,47,1,0,6,0,0,0,0,9,0
 532380,Blažejovice,96,80,77,6,0,0,5,0,3,11,0,0,3,0,0,5,1,0,0,29,0,0,6,0,0,0,0,8,0
 ```
+
