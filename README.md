@@ -1,41 +1,15 @@
 # Czech Election Results Scraper
 
-A Python web scraper that extracts election results from the Czech Statistical Office website (volby.cz) for the 2017 parliamentary elections.
-
 ## Project Description
 
-This project is the third assignment for the Engeto Online Python Academy. It scrapes election data from Czech municipalities within a specified district and exports the results to a CSV file.
+A Python web scraper that scrapes election data from Czech municipalities within a specified district and exports the results to a CSV file.
 
-The scraper collects:
-- Municipality code and name
-- Number of registered voters
-- Number of envelopes issued
-- Number of valid votes
-- Vote counts for each political party
+### Required Libraries installation
 
-## Installation
-
-### Prerequisites
-- Python 3.6 or higher
-
-### Required Libraries
-
-Install the required dependencies using pip:
-
-```bash
-pip install requests beautifulsoup4
-```
-
-Or install from a requirements file:
+The libraries used in the code are stored in the requirements.txt file. For installation, I recommend using a new virtual environment. Install the required dependencies using pip:
 
 ```bash
 pip install -r requirements.txt
-```
-
-**requirements.txt:**
-```
-requests
-beautifulsoup4
 ```
 
 ## Running the Project
@@ -46,46 +20,35 @@ The script requires two command-line arguments:
 python main.py <target_district_url> <csv_file_name>
 ```
 
-### Arguments:
-1. **target_district_url** - URL of the district election page from volby.cz
-2. **csv_file_name** - Name of the output CSV file (must end with `.csv`)
+The results will then be downloaded as a file with the .csv extension
 
 ### Example Usage
 
 Scraping results for the Benešov district:
 
+1. argument: "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2101"
+2. argument: "benešov_results.csv"
+
+Program launch:
+
 ```bash
 python main.py "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2101" "benešov_results.csv"
 ```
 
-### Expected Output
+Download progress:
 
+```bash
+[Scraping data from Url: 'https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2101']
+[Scraping data from municipalities]
+[Scraping finished - results saved to 'benešov_results.csv']
 ```
-[Initiating scraper]
-[Scraping municipalities]
-[Scraping finished - results saved to benešov_results.csv]
+
+Partial output:
+
+```bash
+municipality_code,municipality_name,registered_voters,envelopes_issued,valid_votes,Občanská demokratická strana,...
+529303,Benešov,13 104,8 485,8 437,1 052,10,2,624,3,802,597,109,35,112,6,11,948,3,6,414,2 577,3,21,314,5,58,17,16,682,10
+532568,Bernartice,191,148,148,4,0,0,17,0,6,7,1,4,0,0,0,7,0,0,3,39,0,0,37,0,3,0,0,20,0
+530743,Bílkovice,170,121,118,7,0,0,15,0,8,18,0,2,0,0,0,3,0,0,2,47,1,0,6,0,0,0,0,9,0
+532380,Blažejovice,96,80,77,6,0,0,5,0,3,11,0,0,3,0,0,5,1,0,0,29,0,0,6,0,0,0,0,8,0
 ```
-
-### Output CSV Format
-
-The resulting CSV file will contain columns:
-- `municipality_code` - Municipal identification code
-- `municipality_name` - Name of the municipality
-- `registered_voters` - Total registered voters
-- `envelopes_issued` - Number of envelopes issued
-- `valid_votes` - Number of valid votes cast
-- `[Party Name]` - Vote count for each political party
-
-**Sample output (benešov_results.csv):**
-
-| municipality_code | municipality_name | registered_voters | envelopes_issued | valid_votes | Občanská demokratická strana | Řád národa - Vlastenecká unie | ... |
-|-------------------|-------------------|-------------------|------------------|-------------|------------------------------|-------------------------------|-----|
-| 529303 | Benešov | 12 345 | 8 234 | 8 156 | 1 234 | 45 | ... |
-| 532568 | Červený Újezd | 856 | 567 | 562 | 89 | 12 | ... |
-
-## Error Handling
-
-The script validates inputs and will exit with an error message if:
-- Incorrect number of arguments provided
-- URL is not from the volby.cz domain
-- Output filename does not end with `.csv`
