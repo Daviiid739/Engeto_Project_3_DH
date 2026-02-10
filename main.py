@@ -140,7 +140,7 @@ def scrape_municipality(url: str) -> dict:
     
     return result
 
-def save_to_csv(data: list, csv_file: str) -> None:
+def save_to_csv(data: list, csv_file: str):
     """
     Saves list of dictionaries to CSV file
     
@@ -197,3 +197,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
