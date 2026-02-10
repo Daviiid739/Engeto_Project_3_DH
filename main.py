@@ -74,7 +74,7 @@ def get_basic_stats(tables: list) -> dict:
     """
     first_table = tables[0]
     
-    HTML_ID = {
+    HTML_STATS_ID = {
         'registered_voters': 'sa2',
         'envelopes_issued': 'sa3',
         'valid_votes': 'sa6'
@@ -82,7 +82,7 @@ def get_basic_stats(tables: list) -> dict:
     
     results = {}
     
-    for column_name, html_id in HTML_ID.items():
+    for column_name, html_id in HTML_STATS_ID.items():
         cell = first_table.find('td', headers=html_id)
         results[column_name] = cell.get_text(strip=True)
     
@@ -195,4 +195,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
